@@ -1,11 +1,13 @@
 var express = require("express");
 var router = express.Router();
 const User = require("../models/User");
+const inputValidate = require("../middlewares/uidValidator");
 
-router.get("/", function (req, res, next) {
-  const userName = req.body.userName;
+router.get("/", inputValidate, function (req, res, next) {
+  let payload = req.payload;
+  const userID = payload.uid;
 
-  User.findOne({ where: { username: userName } })
+  User.findOne({ where: { uid: userID } })
     .then((user) => {
       console.log(user);
       res.json({

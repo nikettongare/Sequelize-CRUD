@@ -11,8 +11,8 @@ const getUserRouter = require("./src/routes/getUser");
 const updateUserRouter = require("./src/routes/updateUser");
 const deleteUserRouter = require("./src/routes/deleteUser");
 
-const sequelize = require("./src/Utils/database");
-const User = require("./src/models/User");
+const sequelize = require("./src/utils/database");
+require("./src/models/User");
 const app = express();
 
 app.use(logger("dev"));

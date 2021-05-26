@@ -5,14 +5,14 @@ const User = require("../models/User");
 router.get("/", function (req, res, next) {
   User.findAll()
     .then((users) => {
-      res.json({
+      return res.json({
         success: true,
         msg: "User List Fetched",
         users: users,
       });
     })
     .catch((err) => {
-      res.json({
+      return res.json({
         success: false,
         msg: "fetch failed",
         err: err,
