@@ -10,14 +10,14 @@ router.get("/", inputValidate, function (req, res, next) {
   User.findOne({ where: { uid: userID } })
     .then((user) => {
       console.log(user);
-      res.json({
+      return res.json({
         success: true,
         msg: "User Data Fetched",
         users: user,
       });
     })
     .catch((err) => {
-      res.json({
+      return res.json({
         success: false,
         msg: "User id not found",
         err: err,
